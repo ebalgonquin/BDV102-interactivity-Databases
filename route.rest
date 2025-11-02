@@ -1,0 +1,23 @@
+GET http://localhost:3000/Customers
+
+###
+GET http://localhost:3000/Customers/12
+
+###
+POST http://localhost:3000/Customers
+Content-Type: application/json
+
+{
+    "name": "Emily",
+    "CustomerOrdered": "Peperoni pizza"
+}
+
+### 
+DELETE  http://localhost:3000/Customers/12
+
+### 
+PATCH http://localhost:3000/Customers/12
+Content-Type: application/json
+{
+    "name": "new name"
+}
