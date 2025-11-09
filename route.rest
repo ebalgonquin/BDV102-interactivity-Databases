@@ -1,22 +1,22 @@
-GET http://localhost:3000/Customers
+GET http://localhost:3000/users
 
 ###
-GET http://localhost:3000/Customers/12
+GET http://localhost:3000/users/12
 
 ###
-POST http://localhost:3000/Customers
+POST http://localhost:3000/users
 Content-Type: application/json
 
 {
     "name": "Emily",
-    "CustomerOrdered": "Peperoni pizza"
+    "userOrdered": "Peperoni pizza"
 }
 
 ### 
-DELETE  http://localhost:3000/Customers/12
+DELETE  http://localhost:3000/users/12
 
 ### 
-PATCH http://localhost:3000/Customers/12
+PATCH http://localhost:3000/users/12
 Content-Type: application/json
 {
     "name": "new name"

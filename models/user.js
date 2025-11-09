@@ -1,16 +1,16 @@
 const mongoose = require('mongoose')
 
 
-const CustomerSchema = new mongoose.Schema ({
+const userSchema = new mongoose.Schema ({
 name: {
     type: String,
     required:true
 },
-CustomerOrdered:{
+userOrdered:{
   type: String,
     required:true
 },
-CustomerDate: {
+userDate: {
   type: Date,
     required:true,
     default: Date.now
@@ -19,4 +19,4 @@ CustomerDate: {
 })
 
 //allows to export above to use schema
-module.exports = mongoose.model('Customer', CustomerSchema)
+module.exports = mongoose.model('user', userSchema)
