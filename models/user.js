@@ -6,6 +6,10 @@ name: {
     type: String,
     required:true
 },
+email_address: {
+  type:String,
+  required:true
+},
 userOrdered:{
   type: String,
     required:true
