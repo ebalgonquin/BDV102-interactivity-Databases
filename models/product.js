@@ -1,29 +1,22 @@
-const mongoose =require ('mongoose');
-//each schema links to a mongodb collection
-const productSchema =mongoose.Schema ({
+const { DataTypes } = require('sequelize');
+const sequelize = require('../config/database');
 
-    name:{
-type:String,
-required:true,
-    },
+const Product = sequelize.define('Product', {
+  name: {
+    type: DataTypes.STRING,
+    allowNull: false
+  },
+  description: {
+    type: DataTypes.TEXT,
+    allowNull: false
+  },
+  countInStock: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+    defaultValue: 0
+  }
+}, {
+  tableName: 'products'
+});
 
-    description: {
-        type:String,
-        required:true,
-    },
-    product_category: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref:'Category',
-        required:true,
-    },
-    id:String,
-    countInStock: {
-        type:Number, 
-        required:true, 
-        min: 0,
-        max:50
-    }
-
-})
-
-exports.Product =mongoose.model('Product',productSchema);
+module.exports = Product;

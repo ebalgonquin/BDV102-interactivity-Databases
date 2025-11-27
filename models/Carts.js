@@ -1,29 +1,23 @@
-const mongoose = require('mongoose');
+const { DataTypes } = require('sequelize');
+const sequelize = require('../config/database');
+const User = require('./user');
+const Product = require('./product');
 
-const cartSchema = new mongoose.Schema({
-  user: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'User',   // links cart to a user
-    required: true
-  },
-  items: [
-    {
-      product: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Product',   // links to product
-        required: true
-      },
-      quantity: {
-        type: Number,
-        required: true,
-        min: 1
-      }
-    }
-  ],
-  createdAt: {
-    type: Date,
-    default: Date.now
+const Cart = sequelize.define('Cart', {
+  quantity: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+    defaultValue: 1
   }
+}, {
+  tableName: 'carts'
 });
 
-module.exports= mongoose.model ('Cart', cartSchema);
+// Relationships
+User.hasMany(Cart, { foreignKey: 'userId' });
+Cart.belongsTo(User);
+
+Product.hasMany(Cart, { foreignKey: 'productId' });
+Cart.belongsTo(Product);
+
+module.exports = Cart;
